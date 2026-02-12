@@ -1,4 +1,4 @@
-// Particle Animation
+// Particle Animation with Color Cycling
 const canvas = document.getElementById('particle-canvas');
 if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -9,6 +9,30 @@ if (canvas) {
     const particles = [];
     const particleCount = 80;
 
+    // Color palette: teal → blue → indigo → purple → pink
+    const colors = [
+        { r: 6, g: 182, b: 212 },
+        { r: 59, g: 130, b: 246 },
+        { r: 99, g: 102, b: 241 },
+        { r: 139, g: 92, b: 246 },
+        { r: 236, g: 72, b: 153 }
+    ];
+
+    function getCyclingColor(time, offset) {
+        const speed = 0.0005;
+        const t = ((time * speed) + offset) % 1;
+        const idx = t * (colors.length - 1);
+        const i = Math.floor(idx);
+        const f = idx - i;
+        const c1 = colors[i];
+        const c2 = colors[Math.min(i + 1, colors.length - 1)];
+        return {
+            r: Math.round(c1.r + (c2.r - c1.r) * f),
+            g: Math.round(c1.g + (c2.g - c1.g) * f),
+            b: Math.round(c1.b + (c2.b - c1.b) * f)
+        };
+    }
+
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -16,6 +40,7 @@ if (canvas) {
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
+            this.colorOffset = Math.random();
         }
 
         update() {
@@ -26,10 +51,11 @@ if (canvas) {
             if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
         }
 
-        draw() {
+        draw(time) {
+            const c = getCyclingColor(time, this.colorOffset);
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+            ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, 0.5)`;
             ctx.fill();
         }
     }
@@ -38,14 +64,15 @@ if (canvas) {
         particles.push(new Particle());
     }
 
-    function animate() {
+    function animate(time) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         particles.forEach(particle => {
             particle.update();
-            particle.draw();
+            particle.draw(time);
         });
 
+        const lineColor = getCyclingColor(time, 0);
         particles.forEach((p1, i) => {
             particles.slice(i + 1).forEach(p2 => {
                 const dx = p1.x - p2.x;
@@ -56,7 +83,7 @@ if (canvas) {
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(99, 102, 241, ${0.2 * (1 - distance / 150)})`;
+                    ctx.strokeStyle = `rgba(${lineColor.r}, ${lineColor.g}, ${lineColor.b}, ${0.2 * (1 - distance / 150)})`;
                     ctx.stroke();
                 }
             });
@@ -65,7 +92,7 @@ if (canvas) {
         requestAnimationFrame(animate);
     }
 
-    animate();
+    requestAnimationFrame(animate);
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
@@ -111,7 +138,7 @@ if (contactForm) {
     });
 }
 
-// Smooth scroll for navigation
+// Smooth scroll for navigation (exclude mailto and external links)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -119,6 +146,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+    });
+});
+
+// Ensure mailto links work properly
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = this.getAttribute('href');
     });
 });
 
