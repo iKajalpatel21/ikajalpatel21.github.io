@@ -311,6 +311,13 @@ section h2 {
     color: var(--secondary);
 }
 
+.screenshot-gallery {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
 .project-screenshot {
     display: block;
     width: 100%;
@@ -318,6 +325,12 @@ section h2 {
     margin-top: 1rem;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.screenshot-gallery .project-screenshot {
+    flex: 1 1 45%;
+    max-width: 48%;
+    margin-top: 0;
 }
 
 .project-card {
@@ -500,12 +513,14 @@ section h2 {
 }
 
 /* Activities & Education */
-#activities ul, #education ul {
+#activities ul,
+#education ul {
     list-style: none;
     padding: 0;
 }
 
-#activities li, #education li {
+#activities li,
+#education li {
     background: var(--bg-card);
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -515,7 +530,8 @@ section h2 {
     line-height: 1.7;
 }
 
-#activities strong, #education strong {
+#activities strong,
+#education strong {
     color: var(--text);
     display: block;
     margin-bottom: 0.5rem;
@@ -529,7 +545,8 @@ section h2 {
     margin-top: 3rem;
 }
 
-.contact-info h3, .contact-form h3 {
+.contact-info h3,
+.contact-form h3 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--primary);
