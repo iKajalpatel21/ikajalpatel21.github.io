@@ -295,10 +295,29 @@ section h2 {
 }
 
 .private-repo {
-    display: inline-block;
+    display: block;
     color: var(--text-muted);
     font-size: 0.95rem;
     font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.private-repo a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+
+.private-repo a:hover {
+    color: var(--secondary);
+}
+
+.project-screenshot {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Blog Cards */
