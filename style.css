@@ -325,104 +325,178 @@ section h2 {
     word-wrap: break-word;
 }
 
-/* Blog Cards */
-.blog-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.blog-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.blog-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-}
-
-.blog-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-    line-height: 1.4;
-}
-
-.blog-card p {
+/* Blog Section */
+.blog-intro {
+    text-align: center;
     color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
 }
 
-.blog-card a {
+.blog-intro a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 600;
 }
 
+.blog-intro a:hover {
+    color: var(--secondary);
+}
+
+.blog-compact {
+    list-style: none;
+    padding: 0;
+}
+
+.blog-compact li {
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--border);
+    margin-bottom: 0.5rem;
+    transition: border-color 0.3s, background 0.3s;
+    border-radius: 0 8px 8px 0;
+}
+
+.blog-compact li:hover {
+    border-left-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.blog-compact a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.blog-compact a:hover {
+    color: var(--primary);
+}
+
 /* Experience Timeline */
+.experience-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+}
+
 .timeline {
     position: relative;
-    padding-left: 2rem;
+    padding-left: 3rem;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: 0.75rem;
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    background: linear-gradient(to bottom, var(--primary), var(--secondary), var(--border));
 }
 
 .experience-item {
     position: relative;
-    margin-bottom: 3rem;
-    padding-left: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .experience-item::before {
     content: '';
     position: absolute;
-    left: -2.5rem;
-    top: 0.5rem;
-    width: 12px;
-    height: 12px;
+    left: -2.75rem;
+    top: 0.25rem;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--primary);
-    border: 3px solid var(--bg-dark);
+    background: var(--bg-dark);
+    border: 3px solid var(--primary);
+    z-index: 1;
+}
+
+.exp-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.exp-label.present {
+    color: #22d3ee;
+}
+
+.exp-label.previous {
+    color: var(--text-muted);
 }
 
 .experience-item h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
     color: var(--text);
 }
 
-.experience-item .date {
-    color: var(--primary);
+.exp-role {
+    display: block;
+    color: #22d3ee;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.experience-item .date {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.9rem;
     display: block;
     margin-bottom: 1rem;
 }
 
-.experience-item p {
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
+.exp-details {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
 }
 
-.research-highlight {
-    background: rgba(99, 102, 241, 0.1);
-    padding: 1rem;
-    border-left: 3px solid var(--primary);
-    border-radius: 4px;
-    margin-top: 1rem;
+.exp-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.exp-details li {
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.exp-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22d3ee;
+}
+
+.exp-details .skill-tags {
+    margin-top: 0.75rem;
+}
+
+.exp-details .skill-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.3);
+    color: #22d3ee;
 }
 
 /* Activities & Education */
