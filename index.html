@@ -71,81 +71,107 @@
     </section>
 
     <!-- Projects section -->
-    <section id="projects">
+    <section id="projects" class="projects-section">
         <h2>Technical Projects</h2>
-        <div class="project-list">
-            <div class="project-card featured">
-                <div class="project-badge">Current Research</div>
-                <h3>Neural Spike Sorting ML Pipeline</h3>
-                <p>
-                    At GWU School of Medicine, I build a secure, scalable backend platform that enables researchers to
-                    submit and manage spike-sorting jobs through a web interface. I design Django REST APIs, PostgreSQL
-                    schemas, and a Python-based worker system that processes neural data pipelines, tracks job status,
-                    and prevents task collisions. My work focuses on infrastructure, automation, and reliable execution
-                    of complex neural data workflows rather than developing new spike-detection algorithms.
-                </p>
-                <a href="https://github.com/iKajalpatel21/spikesorting-labhub-try-error" target="_blank">View Working
-                    Directory on GitHub</a>
-                <span class="private-repo">🔒 Private Research Repository - <a
-                        href="https://github.com/UserFriendlySpikesorting"
-                        target="_blank">UserFriendlySpikesorting</a></span>
-                <img src="Labhub.png" alt="SpikeSorting LabHub application interface" class="project-screenshot">
-            </div>
-            <div class="project-card">
-                <div class="project-badge">Hackathon</div>
-                <h3>AGI Desktop Intelligence Agent</h3>
-                <p>
-                    Built during HackWithDC, this AGI-inspired desktop agent uses Groq/Llama 3.3 and Linkup search to
-                    power specialized AI agents for email, documents, and meetings. Features a Streamlit UI for scenario
-                    navigation, JSON-based memory persistence, and a shared orchestrator connecting all components.
-                </p>
-                <a href="https://github.com/ADIVADER19/HackWithDC-AGI" target="_blank">View on GitHub</a>
-                <div class="screenshot-gallery">
-                    <img src="Hack_with_DC.jpg" alt="HackWithDC hackathon" class="project-screenshot">
-                    <img src="Hack_with_DC_2.jpg" alt="HackWithDC hackathon team" class="project-screenshot">
+        <div class="carousel-container">
+            <button class="carousel-arrow carousel-prev" aria-label="Previous project">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="project-card featured">
+                            <div class="project-badge">Current Research</div>
+                            <h3>Neural Spike Sorting ML Pipeline</h3>
+                            <p>
+                                At GWU School of Medicine, I build a secure, scalable backend platform that enables researchers to
+                                submit and manage spike-sorting jobs through a web interface. I design Django REST APIs, PostgreSQL
+                                schemas, and a Python-based worker system that processes neural data pipelines, tracks job status,
+                                and prevents task collisions. My work focuses on infrastructure, automation, and reliable execution
+                                of complex neural data workflows rather than developing new spike-detection algorithms.
+                            </p>
+                            <a href="https://github.com/iKajalpatel21/spikesorting-labhub-try-error" target="_blank">View Working
+                                Directory on GitHub</a>
+                            <span class="private-repo">🔒 Private Research Repository - <a
+                                    href="https://github.com/UserFriendlySpikesorting"
+                                    target="_blank">UserFriendlySpikesorting</a></span>
+                            <img src="Labhub.png" alt="SpikeSorting LabHub application interface" class="project-screenshot">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card">
+                            <div class="project-badge">Hackathon</div>
+                            <h3>AGI Desktop Intelligence Agent</h3>
+                            <p>
+                                Built during HackWithDC, this AGI-inspired desktop agent uses Groq/Llama 3.3 and Linkup search to
+                                power specialized AI agents for email, documents, and meetings. Features a Streamlit UI for scenario
+                                navigation, JSON-based memory persistence, and a shared orchestrator connecting all components.
+                            </p>
+                            <a href="https://github.com/ADIVADER19/HackWithDC-AGI" target="_blank">View on GitHub</a>
+                            <div class="screenshot-gallery">
+                                <img src="Hack_with_DC.jpg" alt="HackWithDC hackathon" class="project-screenshot">
+                                <img src="Hack_with_DC_2.jpg" alt="HackWithDC hackathon team" class="project-screenshot">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card">
+                            <h3>Real-Time Stock Market Data Pipeline</h3>
+                            <p>
+                                This end-to-end pipeline ingests live stock data from the Finnhub API, streams it through
+                                Apache Kafka, processes it with Spark, and stores results in Google BigQuery. The project also
+                                includes a Next.js dashboard and Tableau visualizations and is deployed with Docker and
+                                Kubernetes.
+                            </p>
+                            <a href="https://github.com/iKajalpatel21/RealTimeStockDataPipeline" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card">
+                            <h3>NYISO Electricity Consumption &amp; Pricing Insights</h3>
+                            <p>
+                                Using historical data from the New York Independent System Operator, this project analyzes
+                                locational marginal prices, grid congestion and demand to forecast price changes, predict demand
+                                and detect anomalies. The study spans data from 2001-2023 and leverages Python, PySpark,
+                                Scikit-learn and Matplotlib.
+                            </p>
+                            <a href="https://github.com/iKajalpatel21/NYISO-Electricity-Consumption-Pricing-Insights"
+                                target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card">
+                            <h3>SEC Corporate Filings Project</h3>
+                            <p>
+                                This analysis of U.S. Securities and Exchange Commission financial statement data benchmarks
+                                companies, clusters them by financial health, detects potential fraud, and maps executive
+                                networks using Neo4j and GraphRAG. Tools used include Pandas, PySpark, graph analytics and
+                                custom visualizations.
+                            </p>
+                            <a href="https://github.com/iKajalpatel21/SEC-Corporate-Filings-Project" target="_blank">View on
+                                GitHub</a>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card">
+                            <h3>NYC Taxi Trip Insights</h3>
+                            <p>
+                                This project explores millions of New York City taxi rides to uncover demand patterns, estimate
+                                trip times, analyze payment preferences and build fare prediction models. It uses Python,
+                                Pandas, PySpark, Scikit-learn and Seaborn on large Parquet datasets.
+                            </p>
+                            <a href="https://github.com/iKajalpatel21/NYC-Taxi-Trip-Insights" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="project-card">
-                <h3>Real-Time Stock Market Data Pipeline</h3>
-                <p>
-                    This end-to-end pipeline ingests live stock data from the Finnhub API, streams it through
-                    Apache Kafka, processes it with Spark, and stores results in Google BigQuery. The project also
-                    includes a Next.js dashboard and Tableau visualizations and is deployed with Docker and
-                    Kubernetes.
-                </p>
-                <a href="https://github.com/iKajalpatel21/RealTimeStockDataPipeline" target="_blank">View on GitHub</a>
-            </div>
-            <div class="project-card">
-                <h3>NYISO Electricity Consumption &amp; Pricing Insights</h3>
-                <p>
-                    Using historical data from the New York Independent System Operator, this project analyzes
-                    locational marginal prices, grid congestion and demand to forecast price changes, predict demand
-                    and detect anomalies. The study spans data from 2001-2023 and leverages Python, PySpark,
-                    Scikit-learn and Matplotlib.
-                </p>
-                <a href="https://github.com/iKajalpatel21/NYISO-Electricity-Consumption-Pricing-Insights"
-                    target="_blank">View on GitHub</a>
-            </div>
-            <div class="project-card">
-                <h3>SEC Corporate Filings Project</h3>
-                <p>
-                    This analysis of U.S. Securities and Exchange Commission financial statement data benchmarks
-                    companies, clusters them by financial health, detects potential fraud, and maps executive
-                    networks using Neo4j and GraphRAG. Tools used include Pandas, PySpark, graph analytics and
-                    custom visualizations.
-                </p>
-                <a href="https://github.com/iKajalpatel21/SEC-Corporate-Filings-Project" target="_blank">View on
-                    GitHub</a>
-            </div>
-            <div class="project-card">
-                <h3>NYC Taxi Trip Insights</h3>
-                <p>
-                    This project explores millions of New York City taxi rides to uncover demand patterns, estimate
-                    trip times, analyze payment preferences and build fare prediction models. It uses Python,
-                    Pandas, PySpark, Scikit-learn and Seaborn on large Parquet datasets.
-                </p>
-                <a href="https://github.com/iKajalpatel21/NYC-Taxi-Trip-Insights" target="_blank">View on GitHub</a>
-            </div>
+            <button class="carousel-arrow carousel-next" aria-label="Next project">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+        <div class="carousel-dots"></div>
+        <div class="carousel-counter">
+            <span class="carousel-current">1</span> / <span class="carousel-total">6</span>
         </div>
     </section>
 
@@ -328,9 +354,21 @@
             want to chat? I'd love to hear from you!</p>
 
         <div class="contact-links">
-            <a href="mailto:ikajalpatel21@gmail.com" class="email-link">ikajalpatel21@gmail.com</a>
-            <a href="https://www.linkedin.com/in/kajal-patel-cs/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/iKajalpatel21" target="_blank">GitHub</a>
+            <a href="mailto:ikajalpatel21@gmail.com" class="contact-card">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span class="contact-label">Email</span>
+                <span class="contact-detail">ikajalpatel21@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/kajal-patel-cs/" target="_blank" class="contact-card">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-detail">kajal-patel-cs</span>
+            </a>
+            <a href="https://github.com/iKajalpatel21" target="_blank" class="contact-card">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span class="contact-label">GitHub</span>
+                <span class="contact-detail">iKajalpatel21</span>
+            </a>
         </div>
     </section>
 
