@@ -18,53 +18,44 @@ function WorkIcon() {
   )
 }
 
-/*
-  Snake layout (newest → oldest, top → bottom):
+const EXPERIENCE = [
+  {
+    type: 'work',
+    icon: <WorkIcon />,
+    title: 'Software Engineer @ GWU Medicine',
+    desc: 'Designed ML data pipeline infrastructure for large-scale neural signal processing workflows using SpikeInterface.',
+    date: 'May 2025 - Present',
+  },
+  {
+    type: 'work',
+    icon: <WorkIcon />,
+    title: 'Senior Data Engineer @ Stridely Solutions',
+    desc: 'Led enterprise ETL and BI pipelines across data engineering roles, supporting scalable reporting and analytics infrastructure.',
+    date: 'Nov 2019 - Nov 2023',
+  },
+  {
+    type: 'work',
+    icon: <WorkIcon />,
+    title: 'Software Engineer @ Shine Software',
+    desc: 'Built mobile applications with Flutter and Android, with applied work in sentiment analysis and user-focused product features.',
+    date: 'Aug 2017 - Dec 2018',
+  },
+]
 
-  Row 0:  [M.S. @ GWU]          [Research Asst @ GWU Med]   → uturn RIGHT
-  Row 1:  [phantom]             [Senior DE @ Stridely]       → uturn LEFT
-  Row 2:  [B.E. @ LDRP]        [SWE @ Shine Software]
-*/
-const SEGMENTS = [
+const EDUCATION = [
   {
-    left: {
-      type: 'edu', icon: <GradIcon />,
-      title: 'M.S. @ George Washington University',
-      desc: 'Computer Science: Machine Learning, Data Systems, Neuroscience.',
-      date: 'Jan 2024 – Dec 2025',
-    },
-    right: {
-      type: 'work', icon: <WorkIcon />,
-      title: 'Research Assistant III @ GWU Medicine',
-      desc: 'ML pipelines for neural signal processing and spike sorting.',
-      date: 'May 2025 – Present',
-    },
-    uturn: 'right',
+    type: 'edu',
+    icon: <GradIcon />,
+    title: 'M.S. Computer Science @ George Washington University',
+    desc: 'Focused on machine learning, data systems, and neuroscience-oriented computing.',
+    date: 'Jan 2024 - Dec 2025',
   },
   {
-    left: null,
-    right: {
-      type: 'work', icon: <WorkIcon />,
-      title: 'Senior Data Engineer @ Stridely Solutions',
-      desc: 'BI Intern → Data Engineer → Senior DE. Enterprise ETL pipelines.',
-      date: 'Nov 2019 – Nov 2023',
-    },
-    uturn: 'left',
-  },
-  {
-    left: {
-      type: 'edu', icon: <GradIcon />,
-      title: 'B.E. Information Technology @ LDRP',
-      desc: 'Gujarat Technological University.',
-      date: '2014 – 2017',
-    },
-    right: {
-      type: 'work', icon: <WorkIcon />,
-      title: 'Software Engineer @ Shine Software',
-      desc: 'Mobile app development with Flutter, sentiment analysis pipelines.',
-      date: 'Aug 2017 – Dec 2018',
-    },
-    uturn: null,
+    type: 'edu',
+    icon: <GradIcon />,
+    title: 'B.E. Information Technology @ LDRP',
+    desc: 'Gujarat Technological University.',
+    date: '2014 - 2017',
   },
 ]
 
@@ -98,33 +89,29 @@ export default function ExperienceSection() {
 
   return (
     <section id="experience" className="section">
-      <h2 ref={headingRef} className="journey-heading animate">My Journey</h2>
+      <div ref={headingRef} className="experience-heading animate">
+        <div className="section-label">Experience</div>
+        <h2 className="section-title">Work and education</h2>
+      </div>
 
-      <div className="snake-wrap">
-        {SEGMENTS.map((seg, i) => (
-          <div key={i}>
-            <div className="snake-seg">
-              {/* Cards row */}
-              <div className="snake-cards">
-                <div className={`snake-card-slot left${!seg.left ? ' empty' : ''}`}>
-                  <JourneyCard item={seg.left} />
-                </div>
-                <div className="snake-card-slot right">
-                  <JourneyCard item={seg.right} />
-                </div>
-              </div>
-
-              {/* Rail: line + dots */}
-              <div className="snake-rail">
-                <div className={`snake-dot ${seg.left ? seg.left.type : 'empty'}`} />
-                <div className={`snake-dot ${seg.right ? seg.right.type : 'empty'}`} />
-              </div>
-            </div>
-
-            {/* U-turn between segments */}
-            {seg.uturn && <div className={`snake-uturn ${seg.uturn}`} />}
+      <div className="experience-layout">
+        <div className="experience-column">
+          <div className="experience-column-label">Professional</div>
+          <div className="journey-list">
+            {EXPERIENCE.map((item) => (
+              <JourneyCard key={item.title} item={item} />
+            ))}
           </div>
-        ))}
+        </div>
+
+        <div className="experience-column">
+          <div className="experience-column-label">Education</div>
+          <div className="journey-list">
+            {EDUCATION.map((item) => (
+              <JourneyCard key={item.title} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

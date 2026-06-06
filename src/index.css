@@ -395,119 +395,40 @@ ul { list-style: none; }
 }
 .project-card:hover .project-card-arrow { gap: 8px; }
 
-/* ── My Journey — U-turn Snake Timeline ────────────────── */
-
-/*
-  Layout per segment:
-    [left card]  (cards row — above rail)    [right card]
-    ●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━●  (rail)
-
-  Between segments: a U-turn div that curves around one side.
-
-  Dot positions are at center of each card column.
-  With grid-template-columns: 1fr 1fr; gap: 60px on a 1100px container:
-    left dot  ≈ 24% from left
-    right dot ≈ 76% from left
-*/
-
-/* Cards row */
-.snake-cards {
+/* ── Experience ────────────────────────────────────────── */
+.experience-heading {
+  margin-bottom: 34px;
+}
+.experience-heading .section-title {
+  margin-bottom: 0;
+}
+.experience-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  padding-bottom: 14px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+  gap: 24px;
+  align-items: start;
 }
-.snake-card-slot { display: flex; }
-.snake-card-slot.left  { justify-content: center; }
-.snake-card-slot.right { justify-content: center; }
-.snake-card-slot.empty { min-height: 1px; }
-
-/* Rail */
-.snake-rail {
+.experience-column {
+  position: relative;
+}
+.experience-column-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 12px;
+}
+.journey-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  position: relative;
-  align-items: center;
-  padding: 4px 0;
+  gap: 12px;
 }
-.snake-rail::before {
-  content: '';
-  position: absolute;
-  left: 24%; right: 24%;
-  top: 50%; height: 2px;
-  background: rgba(255,255,255,0.09);
-  transform: translateY(-50%);
-}
-.snake-dot {
-  justify-self: center;
-  width: 13px; height: 13px;
-  border-radius: 50%;
-  border: 2px solid var(--bg-1);
-  position: relative; z-index: 1;
-}
-.snake-dot.edu   { background: #3b82f6; box-shadow: 0 0 0 4px rgba(59,130,246,0.15); }
-.snake-dot.work  { background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.13); }
-.snake-dot.empty { background: transparent; border-color: transparent; box-shadow: none; }
-
-/* U-turns — pseudo-element C-shapes that extend into the rails above/below */
-.snake-uturn {
-  position: relative;
-  height: 44px;
-}
-
-/*
-  Right U-turn: C-shape opening LEFT at 76% (right dot position).
-  Extends top/bottom by 11px to reach the dot centers in adjacent rails.
-  Curves around the right side (76% → 96%).
-*/
-.snake-uturn.right::before {
-  content: '';
-  position: absolute;
-  left: 76%;
-  right: 4%;
-  top: -11px;
-  bottom: -11px;
-  border: 2px solid rgba(255,255,255,0.09);
-  border-left: none;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-/*
-  Left U-turn: C-shape opening RIGHT at 24% (left dot position).
-  Curves around the left side (4% → 24%).
-*/
-.snake-uturn.left::before {
-  content: '';
-  position: absolute;
-  left: 4%;
-  right: 76%;
-  top: -11px;
-  bottom: -11px;
-  border: 2px solid rgba(255,255,255,0.09);
-  border-right: none;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-/* Journey heading — big & centered like reference */
-.journey-heading {
-  font-size: clamp(40px, 6vw, 68px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text);
-  text-align: center;
-  margin-bottom: 56px;
-}
-
-/* Journey card — compact, matching reference dimensions */
 .journey-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  width: 280px;
+  border-radius: var(--radius);
+  padding: 18px;
+  width: 100%;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
 .journey-card:hover {
@@ -518,11 +439,11 @@ ul { list-style: none; }
 .journey-card-header {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 .journey-card-icon {
-  width: 24px; height: 24px;
+  width: 28px; height: 28px;
   border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -531,24 +452,24 @@ ul { list-style: none; }
 .journey-card-icon.edu  { background: rgba(59,130,246,0.12); color: #60a5fa; }
 .journey-card-icon.work { background: rgba(16,185,129,0.10); color: #34d399; }
 .journey-card-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.01em;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 .journey-card-desc {
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--text-3);
-  margin-bottom: 6px;
-  padding-left: 32px;
+  margin-bottom: 8px;
+  padding-left: 38px;
 }
 .journey-card-date {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-4);
-  font-style: italic;
-  padding-left: 32px;
+  font-weight: 500;
+  padding-left: 38px;
 }
 
 /* ── Skills ────────────────────────────────────────────── */
@@ -976,17 +897,12 @@ ul { list-style: none; }
   .sidebar-link.active { border-left: none; }
   .whoami-block { grid-template-columns: 1fr; gap: 8px; }
   .footer { flex-direction: column; gap: 12px; text-align: center; }
-  .snake-cards { gap: 24px; }
-  .snake-rail { gap: 24px; }
-  .journey-card { width: 100%; max-width: 260px; }
+  .experience-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 580px) {
-  .snake-cards { grid-template-columns: 1fr; gap: 12px; }
-  .snake-rail { display: none; }
-  .snake-uturn { display: none; }
-  .snake-card-slot { justify-content: flex-start; }
-  .journey-card { width: 100%; max-width: 100%; }
-  .journey-heading { text-align: left; font-size: 36px; }
+  .journey-card { padding: 16px; }
+  .journey-card-desc,
+  .journey-card-date { padding-left: 0; }
 }
 @media (max-width: 640px) {
   .nav-links { display: none; }
