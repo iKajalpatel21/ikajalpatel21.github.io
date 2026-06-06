@@ -9,6 +9,15 @@ function GitHubIcon() {
   )
 }
 
+function LinkIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  )
+}
+
 function ArrowIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,9 +48,16 @@ function HackCard({ item, index }) {
     >
       <div className="hack-card-top">
         <div className="hack-event-badge">{item.event}</div>
-        <a href={item.github} target="_blank" rel="noreferrer" className="hack-github-link">
-          <GitHubIcon /> View repo <ArrowIcon />
-        </a>
+        <div className="hack-links">
+          <a href={item.github} target="_blank" rel="noreferrer" className="hack-link">
+            <GitHubIcon /> GitHub <ArrowIcon />
+          </a>
+          {item.devpost && (
+            <a href={item.devpost} target="_blank" rel="noreferrer" className="hack-link">
+              <LinkIcon /> Devpost <ArrowIcon />
+            </a>
+          )}
+        </div>
       </div>
 
       <h3 className="hack-project-name">{item.project}</h3>

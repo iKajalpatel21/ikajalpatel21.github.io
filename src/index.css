@@ -545,6 +545,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 .hack-event-badge {
   font-size: 11px;
@@ -557,7 +558,14 @@ ul { list-style: none; }
   border: 1px solid rgba(6, 182, 212, 0.2);
   background: rgba(6, 182, 212, 0.06);
 }
-.hack-github-link {
+.hack-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.hack-link {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -566,7 +574,7 @@ ul { list-style: none; }
   color: var(--text-4);
   transition: color 0.2s;
 }
-.hack-github-link:hover { color: var(--text-2); }
+.hack-link:hover { color: var(--text-2); }
 .hack-project-name {
   font-size: 22px;
   font-weight: 700;
