@@ -13,6 +13,17 @@ export const projects = [
     ],
     sections: [
       {
+        id: 'abstract',
+        label: 'Abstract',
+        content: [
+          'Spike sorting—the identification of individual neuronal action potentials (APs) from multi-electrode extracellular recordings—is a critical analysis step for in-vivo, in-vitro, and in-culture electrophysiological experiments. However, spike sorting is a computationally demanding process highly sensitive to sorter parameters. Optimal performance depends on factors such as animal age, probe configuration, brain region, and pharmacological or genetic manipulations. Consequently, spike sorters often require extensive parameter tuning to achieve accurate and efficient unit isolation. Because parameter adjustment typically requires programming expertise, this creates an additional barrier for researchers primarily trained in the biological sciences.',
+          'Here we present Spike Sorting Lab Hub (SSLH), a web-based infrastructure designed to simplify and streamline spike-sorting workflows. SSLH allows users to collect and manage sorting parameters for specific recordings (sorting pipelines), apply these pipelines to new datasets, distribute workloads across multiple computing nodes (workers), and monitor sorting progress in real time.',
+          'SSLH is implemented as a lightweight Django-based web server that can be integrated into Network-Attached Storage (NAS) platforms, such as TrueNAS, as a standalone Docker container. This architecture provides flexibility and scalability, enabling SSLH to operate efficiently on infrastructures ranging from a laboratory NAS with a single dedicated worker to large-scale spike-sorting farms or cloud-based environments.',
+          'A key strength of SSLH is its modular design. Functionality is encapsulated into independent Django applications, allowing future expansion and customization without disrupting existing components. This approach improves maintainability, simplifies deployment, and supports long-term platform development.',
+          'At the time of submission, SSLH is undergoing beta testing. Its source code is publicly available on GitHub under the GNU General Public License (GPL). By combining accessibility, scalability, and modularity, SSLH lowers the technical barrier to high-quality spike sorting and promotes more consistent and reproducible analysis across complex electrophysiological datasets.',
+        ],
+      },
+      {
         id: 'overview',
         label: 'Overview',
         content: [
