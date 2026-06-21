@@ -127,7 +127,7 @@ export const projects = [
 
   {
     id: 'brand-guardian-ai',
-    title: 'Brand Guardian AI',
+    title: 'Azure Multi-Modal Compliance Orchestration Engine using LangGraph and LangSmith',
     subtitle: 'Multi-modal compliance engine that audits video content against brand and regulatory policies using Azure and LangGraph.',
     badge: 'AI Engineering',
     tags: ['Python', 'LangGraph', 'LangSmith', 'Azure OpenAI', 'FastAPI'],
@@ -177,9 +177,10 @@ export const projects = [
         id: 'hurdles',
         label: 'Hurdles',
         content: [
-          'Azure Video Indexer processes video asynchronously and the job can take several minutes. Building a reliable polling loop with proper timeout handling and error propagation into the LangGraph state was more involved than expected. A failed indexing job needed to surface a clean error in the audit report, not crash the pipeline.',
-          'Getting retrieval quality right in Azure AI Search required more iteration than expected. The first chunking strategy split PDF paragraphs mid-sentence and produced retrieval results that confused the compliance audit step. Adjusting chunk boundaries and adding overlap solved it but took several rounds of testing against real policy documents.',
-          'Coordinating three Azure services in sequence meant that a credential misconfiguration or a rate limit on any one of them would produce a confusing error downstream. Added explicit validation at startup so configuration problems surface before a video is ever submitted, not halfway through a two-minute audit run.',
+          'Azure Video Indexer was the steepest learning curve. I had never worked with it before, and authentication was not straightforward. The service requires an Azure CLI login before any video indexing operation can happen. The system has to call az login, validate the user identity against the Video Indexer account permissions, and then generate an account-scoped access token before a single frame of video gets processed. Getting that handshake right took significant debugging because a missing or expired token produced a generic HTTP error, not an informative failure message.',
+          'Managing credentials across three separate Azure services was harder than expected. Azure OpenAI, Azure AI Search, and Azure Video Indexer each have their own endpoint and key configuration, and a misconfiguration in any one of them fails silently at the wrong stage. I added explicit startup validation so the system checks all credentials before accepting a video submission, rather than failing halfway through a multi-minute processing job.',
+          'Azure Video Indexer processes video asynchronously and the turnaround can take several minutes depending on video length. Building a reliable polling loop that handles timeouts, retries, and the occasional quarantine rejection from the indexer required careful state management inside LangGraph. When the indexer rejects a video, it does not raise a clear exception. It just stops updating the job status, so I had to define explicit timeout thresholds and propagate a structured error into the audit state rather than letting the pipeline hang.',
+          'Retrieval quality in Azure AI Search took several rounds of tuning. The first chunking strategy split compliance PDF paragraphs mid-sentence, which caused the retrieval step to surface fragments that confused the OpenAI audit step. Adjusting chunk size and adding overlap between chunks fixed the quality issue, but it required re-indexing the documents each time and testing against real policy queries to verify the improvement.',
         ],
       },
     ],
