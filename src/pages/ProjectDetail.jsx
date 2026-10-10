@@ -127,7 +127,7 @@ export default function ProjectDetail() {
 
             {/* Multiple images */}
             {sec.images && (
-              <div className="detail-images">
+              <div className="detail-images" style={sec.stack ? { gridTemplateColumns: '1fr' } : undefined}>
                 {sec.images.map(src => (
                   <img key={src} src={src} alt="" className="detail-image" style={{ margin: 0 }} />
                 ))}
