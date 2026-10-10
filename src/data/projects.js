@@ -71,6 +71,64 @@ export const projects = [
   },
 
   {
+    id: 'movement-artifact-pipeline',
+    title: 'Movement Artifact Pipeline: Sleep/Wake Classification from EMG + Video',
+    subtitle: 'A Python port of a neonatal-mouse recording pipeline that syncs video to ephys and tells real movement from artifact. Open it up and explore the figures.',
+    badge: 'Current Research',
+    tags: ['Python', 'Signal Processing', 'DeepLabCut', 'Open Ephys', 'EMG', 'Neuroscience'],
+    thumbnail: '/movement-sleep-wake.png',
+    featured: false,
+    links: [
+      { label: 'Explore on GitHub', url: 'https://github.com/iKajalpatel21/Movement-artifact-pipeline-analysis' },
+    ],
+    sections: [
+      {
+        id: 'overview',
+        label: 'Overview',
+        content: [
+          'Neonatal-mouse sleep research depends on knowing when the animal is actually moving. This pipeline takes a raw recording (Open Ephys electrophysiology plus video), aligns the two, processes the EMG and DeepLabCut pose signals, and labels each moment as Sleep or Wake, with movement bursts inside sleep tagged as Twitch or Jerk.',
+          'It is a Python port of a MATLAB workflow that had to be run by hand, one recording at a time. The goal is to remove the manual step of watching charts to decide whether a twitch happened during sleep or wake, and to give every session a machine-checkable pass/fail instead of a plot to eyeball.',
+          'Scroll down for the figures from my local runs. The full code and README are on GitHub if you want to dig in.',
+        ],
+        image: '/movement-sleep-wake.png',
+      },
+      {
+        id: 'sync',
+        label: 'Fixing Video/Ephys Sync',
+        content: [
+          'The original approach fits one straight line across the whole recording to map video time to ephys time. That breaks whenever the camera drops a frame, because the drop is invisible in the video file and only shows up later as drift.',
+          'I replaced it with a piecewise-anchored fit and evaluated it leave-one-out: each LED/ADC pulse is held out, the mapping is rebuilt from its neighbors, and the held-out pulse is checked against its real time. Median timing error went from 102.4 ms to 12.2 ms on a real recording.',
+        ],
+        image: '/movement-sync-compare.png',
+      },
+      {
+        id: 'emg',
+        label: 'EMG Signal Choices',
+        content: [
+          'I compared a single-channel EMG envelope against a bipolar one (emg1 minus emg3) with identical bandpass, notch and smoothing. The bipolar version keeps the large bursts while changing how smaller events and baseline noise look, which matters when the classifier is looking for sustained tone.',
+        ],
+        image: '/movement-emg-bipolar.png',
+      },
+      {
+        id: 'agreement',
+        label: 'EMG + DLC Agreement',
+        content: [
+          'Classifying from EMG alone, with a 3 second sustained-tone rule and a GMM split, labels 16% of this recording as aroused. Requiring the video-based DLC movement signal to agree with the EMG pulls that down to 8% wake, because a burst only counts when both signals say the animal moved.',
+        ],
+        image: '/movement-emg-vs-dlc.png',
+      },
+      {
+        id: 'status',
+        label: 'Where It Stands',
+        content: [
+          'Synchronization is validated on real data. The Sleep/Wake classifier runs end to end but is still a work in progress: the DLC movement threshold is too loose, thresholds are placeholders rather than values calibrated against the original MATLAB output, and the next step is validating against that output for the same recording before trusting any labels.',
+          'I would rather show the figures with those caveats than present numbers that are not ready yet.',
+        ],
+      },
+    ],
+  },
+
+  {
     id: 'stock-market-pipeline',
     title: 'Real-Time Stock Market Data Pipeline',
     subtitle: 'End-to-end streaming pipeline: from live API to BigQuery, dashboard, and K8s deployment.',
