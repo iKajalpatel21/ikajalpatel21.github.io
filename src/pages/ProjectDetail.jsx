@@ -29,6 +29,14 @@ export default function ProjectDetail() {
       )
       obs.observe(el)
       observers.push(obs)
+
+      // Reveal on any viewport entry so short trailing sections can't stay hidden
+      const reveal = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) el.classList.add('visible') },
+        { threshold: 0 }
+      )
+      reveal.observe(el)
+      observers.push(reveal)
     })
 
     // Trigger visibility for elements already in view
